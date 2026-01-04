@@ -50,13 +50,15 @@ FORM.addEventListener("submit", async (e) => {
 
   try {
     const res = await fetch(
-      "https://script.google.com/macros/s/AKfycbwnmG9PAEOUj_TR4rlSJ_jAC-M9WsoPJHC8tO7WK4ZUgOm_ReH9ojI5mXKcUQYwqSrVRQ/exec",
-      {
+      "https://script.google.com/macros/s/AKfycbwnmG9PAEOUj_TR4rlSJ_jAC-M9WsoPJHC8tO7WK4ZUgOm_ReH9ojI5mXKcUQYwqSrVRQ/exec", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      }
-    );
+        body: new URLSearchParams({
+        inviteCode: FORM.inviteCode.value,
+        name: FORM.name.value,
+        email: FORM.email.value,
+        attending: FORM.attending.value
+        })
+      });
 
     const result = await res.json();
 
