@@ -6,102 +6,137 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
+      font-family: 'Segoe UI', 'Georgia', serif;
       margin: 0;
       padding: 0;
-      background: #f8f8f8;
-      color: #333;
+      background: linear-gradient(135deg, #fef5eb 0%, #f7dab0 100%);
+      color: #654321;
     }
     .container {
       max-width: 430px;
-      margin: 30px auto;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      padding: 28px 22px 24px 22px;
+      margin: 36px auto;
+      background: #fff8ed;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(80,60,20,0.065);
+      padding: 30px 22px 26px 22px;
+      border: 2px solid #e0b076;
     }
     .names {
-      font-size: 1.6em;
-      margin-bottom: .2em;
+      font-size: 1.65em;
+      margin-bottom: 0.25em;
       font-family: 'Georgia', serif;
-      color: #b35fa1;
+      color: #c4571c;
+      text-align: center;
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+    .autumn-leaf {
+      vertical-align: middle;
+      width: 28px;
+      height: 28px;
+      margin: 0 4px;
     }
     .details {
-      margin-bottom: 1.5em;
+      margin-bottom: 1.4em;
       font-size: 1.13em;
+      text-align: center;
+      color: #855534;
+      background: #fde5c0;
+      padding: 8px 0 10px 0;
+      border-radius: 8px;
     }
     .details strong {
-      color: #542978;
+      color: #aa440c;
     }
-    .divider {
+    .countdown {
+      font-weight: 500;
+      color: #b75d21;
       text-align: center;
-      color: #ccc;
-      margin: 16px 0 10px 0;
-      font-size: 22px;
-    }
-    h2 {
-      color: #542978;
-      margin-top: 0.6em;
-      font-size: 1.16em;
+      margin: 8px 0 19px 0;
     }
     .message {
       margin-bottom: 1.4em;
-      background: #fcf6fc;
-      padding: 10px 15px;
-      border-radius: 6px;
-      color: #542978;
+      background: #f8e5cd;
+      padding: 13px 15px;
+      border-radius: 7px;
+      color: #86512b;
+      text-align: center;
+      font-size: 1.04em;
+    }
+    .divider {
+      text-align: center;
+      margin: 16px 0 10px 0;
+      font-size: 23px;
+      color: #db9152;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+    h2 {
+      color: #ac4b04;
+      margin: 0.55em 0 0.12em 0;
+      font-size: 1.13em;
+      text-align: center;
     }
     form {
-      margin-top: 12px;
+      margin-top: 14px;
+      text-align: center;
     }
     input, select, button {
-      width: 96%;
+      width: 94%;
+      max-width: 350px;
       box-sizing: border-box;
-      margin: 0.4em 0 0.8em 0;
+      margin: 0.43em 0 0.82em 0;
       padding: 9px;
       font-size: 1em;
-      border: 1px solid #d2bad7;
-      border-radius: 4px;
+      border: 1.5px solid #e0b076;
+      border-radius: 5px;
       outline: none;
+      background: #fdf7ef;
+      color: #422002;
+      font-family: inherit;
     }
     button {
-      background: #b35fa1;
+      background: linear-gradient(90deg, #d37a1b 60%, #af520b 100%);
       color: #fff;
       border: none;
       font-size: 1.1em;
       border-radius: 4px;
       cursor: pointer;
       margin-top: 8px;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(175,82,11,0.06);
       transition: background 0.18s;
     }
     button:hover {
-      background: #542978;
+      background: linear-gradient(90deg, #b75d21 50%, #7c3910 100%);
     }
     .message-status.error { color: #c0392b; }
-    .message-status.success { color: #27ae60; }
+    .message-status.success { color: #2d9348; }
     .venue-link {
-      color: #542978;
-      text-decoration: none;
-    }
-    .countdown {
-      font-weight: bold;
-      color: #b35fa1;
-      margin-top: 5px;
+      color: #c25d0c;
+      text-decoration: underline;
+      font-weight: normal;
     }
     footer {
-      margin-top: 22px;
-      font-size: 0.90em;
-      color: #aaa;
+      margin-top: 25px;
+      font-size: 0.94em;
+      color: #be823b;
       text-align: center;
     }
     @media (max-width: 520px) {
-      .container { max-width: 97vw; padding: 12px 4vw 18px 4vw; }
+      .container { max-width: 97vw; padding: 10px 2vw 15px 2vw; }
+      .autumn-leaf { width: 21px; height: 21px; }
+      .divider { font-size: 20px; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="names">Jennifer Smallwood <span style="color:#542978">♥</span> Philip Aldhous</div>
+    <div class="names">
+      Jennifer Smallwood
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Maple_leaf.svg" alt="leaf" class="autumn-leaf"/>
+      Philip Aldhous
+    </div>
     <div class="details">
       <strong>Wedding Date:</strong> 17<sup>th</sup> October 2026<br>
       <strong>Venue:</strong>
@@ -112,20 +147,20 @@
     <div class="countdown" id="countdown"></div>
 
     <div class="message">
-      We're excited to celebrate with you! Please RSVP below so we know your intentions.<br>
-      (More information will follow closer to the date.)
+      The leaves are falling and love is in the air! Please save our date and let us know if you’ll be able to join us to celebrate.<br>
+      <em>More details coming closer to the day.</em>
     </div>
 
-    <div class="divider">⋯ RSVP ⋯</div>
-    <h2>Let us know if you can join!</h2>
+    <div class="divider">🍁 RSVP 🍁</div>
+    <h2>Will you be able to attend?</h2>
 
     <form id="rsvp-form">
       <input name="name" placeholder="Your Name" required />
       <input name="email" type="email" placeholder="Email Address" required />
       <select name="attending" required>
         <option value="">Will you attend?</option>
-        <option value="Yes">Yes, can't wait!</option>
-        <option value="No">Sorry, can't attend</option>
+        <option value="Yes">Yes, wouldn't miss it!</option>
+        <option value="No">Sorry, can't be there</option>
       </select>
       <input name="inviteCode" placeholder="Invite Code" required />
       <button type="submit">Send RSVP</button>
@@ -141,11 +176,14 @@
   <script>
   // Countdown to wedding day
   const countdown = document.getElementById("countdown");
-  const weddingDate = new Date(2026, 9, 17); // JS months are 0-based: 9 = October
+  const weddingDate = new Date(2026, 9, 17); // October is 9 (zero-indexed)
   function updateCountdown() {
     const today = new Date();
     const diff = weddingDate - today;
-    if(diff <= 0) { countdown.textContent = "It's our big day!"; return; }
+    if (diff <= 0) {
+      countdown.textContent = "It's our wedding day!";
+      return;
+    }
     const days = Math.floor(diff / (1000*60*60*24));
     countdown.textContent = "Only " + days + " day" + (days !== 1 ? "s" : "") + " to go!";
   }
