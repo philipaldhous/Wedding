@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>RSVP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    .message { margin-top: 10px; }
+    .error { color: #c0392b; }
+    .success { color: #27ae60; }
+  </style>
+</head>
+<body>
+
+<h2>RSVP</h2>
+
+<form id="rsvp-form">
+  <input name="name" placeholder="Name" required /><br>
+  <input name="email" type="email" placeholder="Email" required /><br>
+
+  <select name="attending" required>
+    <option value="">Attending?</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select><br>
+
+  <input name="inviteCode" placeholder="Invite Code" required /><br>
+
+  <button type="submit">Submit</button>
+</form>
+
+<div id="message" class="message"></div>
+
+<script>
+const FORM = document.getElementById("rsvp-form");
+const MESSAGE = document.getElementById("message");
+
+FORM.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  MESSAGE.textContent = "Submitting...";
+  MESSAGE.className = "message";
+
+  const data = {
+    name: FORM.name.value,
+    email: FORM.email.value,
+    attending: FORM.attending.value,
+    inviteCode: FORM.inviteCode.value
+  };
+
+  try {
+    const res = await fetch(
+      "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      }
+    );
+
+    const result = await res.json();
+
+    if (!result.success) {
+      MESSAGE.textContent = result.message;
+      MESSAGE.classList.add("error");
+      return;
+    }
+
+    MESSAGE.textContent = "Thank you! Your RSVP has been recorded.";
+    MESSAGE.classList.add("success");
+    FORM.reset();
+
+  } catch (err) {
+    MESSAGE.textContent = "Network error. Please try again.";
+    MESSAGE.classList.add("error");
+  }
+});
+</script>
+
+</body>
+</html>
