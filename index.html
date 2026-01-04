@@ -6,136 +6,136 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
-      font-family: 'Segoe UI', 'Georgia', serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #fef5eb 0%, #f7dab0 100%);
-      color: #654321;
+      background: #FFFAF6;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #3b2f2f;
     }
     .container {
-      max-width: 430px;
-      margin: 36px auto;
-      background: #fff8ed;
+      max-width: 410px;
+      margin: 38px auto;
+      background: #fff;
       border-radius: 14px;
-      box-shadow: 0 2px 10px rgba(80,60,20,0.065);
-      padding: 30px 22px 26px 22px;
-      border: 2px solid #e0b076;
+      box-shadow: 0 2px 16px rgba(120,65,20,0.07), 0 1.5px 5px rgba(180,110,60,0.03);
+      padding: 32px 22px 28px 22px;
+      border: 1.5px solid #F6D1AB;
     }
     .names {
-      font-size: 1.65em;
-      margin-bottom: 0.25em;
-      font-family: 'Georgia', serif;
-      color: #c4571c;
       text-align: center;
+      font-weight: 600;
+      font-size: 1.7em;
       letter-spacing: 0.5px;
-      position: relative;
-    }
-    .autumn-leaf {
-      vertical-align: middle;
-      width: 28px;
-      height: 28px;
-      margin: 0 4px;
+      margin-bottom: 5px;
+      color: #B75D21;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
     }
     .details {
-      margin-bottom: 1.4em;
+      text-align: center;
+      margin-bottom: 1.0em;
       font-size: 1.13em;
-      text-align: center;
+      background: #FFF3E2;
       color: #855534;
-      background: #fde5c0;
-      padding: 8px 0 10px 0;
-      border-radius: 8px;
+      border-radius: 7px;
+      padding: 10px 0 12px 0;
     }
-    .details strong {
-      color: #aa440c;
-    }
+    .details strong { color: #8B4A12; }
     .countdown {
-      font-weight: 500;
-      color: #b75d21;
+      font-weight: 600;
+      color: #943F13;
       text-align: center;
-      margin: 8px 0 19px 0;
+      margin: 10px 0 20px 0;
+      font-size: 1.08em;
+      letter-spacing: 0.2px;
     }
     .message {
       margin-bottom: 1.4em;
-      background: #f8e5cd;
-      padding: 13px 15px;
+      background: #FFE7CC;
+      padding: 12px 15px;
       border-radius: 7px;
-      color: #86512b;
+      color: #A46A19;
       text-align: center;
-      font-size: 1.04em;
+      font-size: 1em;
+      font-family: inherit;
     }
     .divider {
-      text-align: center;
-      margin: 16px 0 10px 0;
-      font-size: 23px;
-      color: #db9152;
-      letter-spacing: 2px;
+      color: #DC8D39;
+      font-size: 1.6em;
       font-weight: bold;
+      text-align: center;
+      margin: 20px 0 10px 0;
+      letter-spacing: 3px;
+      line-height: 1;
+      user-select: none;
     }
     h2 {
-      color: #ac4b04;
-      margin: 0.55em 0 0.12em 0;
-      font-size: 1.13em;
+      color: #AF620D;
+      margin: 0.5em 0 0.23em 0;
+      font-size: 1.09em;
       text-align: center;
+      font-weight: 500;
     }
     form {
       margin-top: 14px;
       text-align: center;
     }
     input, select, button {
-      width: 94%;
+      width: 95%;
       max-width: 350px;
       box-sizing: border-box;
-      margin: 0.43em 0 0.82em 0;
-      padding: 9px;
+      margin: 0.60em 0 1em 0;
+      padding: 10px;
       font-size: 1em;
-      border: 1.5px solid #e0b076;
+      border: 1.5px solid #F6D1AB;
       border-radius: 5px;
       outline: none;
-      background: #fdf7ef;
+      background: #FFFCF7;
       color: #422002;
       font-family: inherit;
+      transition: border-color .13s;
+    }
+    input:focus, select:focus {
+      border: 1.5px solid #DC8D39;
     }
     button {
-      background: linear-gradient(90deg, #d37a1b 60%, #af520b 100%);
+      background: #B75D21;
       color: #fff;
       border: none;
-      font-size: 1.1em;
+      font-size: 1.07em;
       border-radius: 4px;
       cursor: pointer;
       margin-top: 8px;
-      font-weight: bold;
-      box-shadow: 0 2px 6px rgba(175,82,11,0.06);
-      transition: background 0.18s;
+      font-weight: 600;
+      box-shadow: 0 2.5px 9px rgba(183,93,33,0.12);
+      transition: background 0.15s;
     }
     button:hover {
-      background: linear-gradient(90deg, #b75d21 50%, #7c3910 100%);
+      background: #943F13;
     }
-    .message-status.error { color: #c0392b; }
-    .message-status.success { color: #2d9348; }
+    .message-status.error { color: #C0392B; }
+    .message-status.success { color: #248a3d; }
     .venue-link {
-      color: #c25d0c;
+      color: #B75D21;
       text-decoration: underline;
-      font-weight: normal;
+      font-weight: 600;
     }
     footer {
       margin-top: 25px;
-      font-size: 0.94em;
-      color: #be823b;
+      font-size: 0.95em;
+      color: #B75D21;
       text-align: center;
+      opacity: 0.7;
     }
     @media (max-width: 520px) {
-      .container { max-width: 97vw; padding: 10px 2vw 15px 2vw; }
-      .autumn-leaf { width: 21px; height: 21px; }
-      .divider { font-size: 20px; }
+      .container { max-width: 97vw; padding: 10px 2vw 18px 2vw; }
+      .divider { font-size: 1.29em; }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="names">
-      Jennifer Smallwood
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Maple_leaf.svg" alt="leaf" class="autumn-leaf"/>
-      Philip Aldhous
+      Jennifer Smallwood <span style="color:#B75D21">♥</span> Philip Aldhous
     </div>
     <div class="details">
       <strong>Wedding Date:</strong> 17<sup>th</sup> October 2026<br>
@@ -147,20 +147,20 @@
     <div class="countdown" id="countdown"></div>
 
     <div class="message">
-      The leaves are falling and love is in the air! Please save our date and let us know if you’ll be able to join us to celebrate.<br>
-      <em>More details coming closer to the day.</em>
+      We'd be delighted if you could join us to celebrate our wedding in beautiful autumn.<br>
+      Please save the date and RSVP below. <em>More details closer to the day.</em>
     </div>
 
-    <div class="divider">🍁 RSVP 🍁</div>
+    <div class="divider">RSVP</div>
     <h2>Will you be able to attend?</h2>
 
     <form id="rsvp-form">
-      <input name="name" placeholder="Your Name" required />
+      <input name="name" placeholder="Your Name" required autofocus />
       <input name="email" type="email" placeholder="Email Address" required />
       <select name="attending" required>
         <option value="">Will you attend?</option>
-        <option value="Yes">Yes, wouldn't miss it!</option>
-        <option value="No">Sorry, can't be there</option>
+        <option value="Yes">Yes, looking forward to it!</option>
+        <option value="No">Sorry, can't attend</option>
       </select>
       <input name="inviteCode" placeholder="Invite Code" required />
       <button type="submit">Send RSVP</button>
@@ -169,14 +169,13 @@
     <div id="message" class="message-status"></div>
 
     <footer>
-      &copy; 2026 Jennifer & Philip – Birtsmorton Court
+      &copy; 2026 Jennifer &amp; Philip – Birtsmorton Court
     </footer>
   </div>
-
   <script>
   // Countdown to wedding day
   const countdown = document.getElementById("countdown");
-  const weddingDate = new Date(2026, 9, 17); // October is 9 (zero-indexed)
+  const weddingDate = new Date(2026, 9, 17); // Months: 0=Jan ... 9=Oct
   function updateCountdown() {
     const today = new Date();
     const diff = weddingDate - today;
