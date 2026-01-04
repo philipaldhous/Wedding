@@ -2,82 +2,191 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>RSVP</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <title>Save The Date – Jennifer & Philip</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    .message { margin-top: 10px; }
-    .error { color: #c0392b; }
-    .success { color: #27ae60; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f8f8;
+      color: #333;
+    }
+    .container {
+      max-width: 430px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      padding: 28px 22px 24px 22px;
+    }
+    .names {
+      font-size: 1.6em;
+      margin-bottom: .2em;
+      font-family: 'Georgia', serif;
+      color: #b35fa1;
+    }
+    .details {
+      margin-bottom: 1.5em;
+      font-size: 1.13em;
+    }
+    .details strong {
+      color: #542978;
+    }
+    .divider {
+      text-align: center;
+      color: #ccc;
+      margin: 16px 0 10px 0;
+      font-size: 22px;
+    }
+    h2 {
+      color: #542978;
+      margin-top: 0.6em;
+      font-size: 1.16em;
+    }
+    .message {
+      margin-bottom: 1.4em;
+      background: #fcf6fc;
+      padding: 10px 15px;
+      border-radius: 6px;
+      color: #542978;
+    }
+    form {
+      margin-top: 12px;
+    }
+    input, select, button {
+      width: 96%;
+      box-sizing: border-box;
+      margin: 0.4em 0 0.8em 0;
+      padding: 9px;
+      font-size: 1em;
+      border: 1px solid #d2bad7;
+      border-radius: 4px;
+      outline: none;
+    }
+    button {
+      background: #b35fa1;
+      color: #fff;
+      border: none;
+      font-size: 1.1em;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.18s;
+    }
+    button:hover {
+      background: #542978;
+    }
+    .message-status.error { color: #c0392b; }
+    .message-status.success { color: #27ae60; }
+    .venue-link {
+      color: #542978;
+      text-decoration: none;
+    }
+    .countdown {
+      font-weight: bold;
+      color: #b35fa1;
+      margin-top: 5px;
+    }
+    footer {
+      margin-top: 22px;
+      font-size: 0.90em;
+      color: #aaa;
+      text-align: center;
+    }
+    @media (max-width: 520px) {
+      .container { max-width: 97vw; padding: 12px 4vw 18px 4vw; }
+    }
   </style>
 </head>
 <body>
+  <div class="container">
+    <div class="names">Jennifer Smallwood <span style="color:#542978">♥</span> Philip Aldhous</div>
+    <div class="details">
+      <strong>Wedding Date:</strong> 17<sup>th</sup> October 2026<br>
+      <strong>Venue:</strong>
+      <a class="venue-link" href="https://birtsmortoncourt.com/" target="_blank">
+        Birtsmorton Court, Malvern
+      </a>
+    </div>
+    <div class="countdown" id="countdown"></div>
 
-<h2>RSVP</h2>
+    <div class="message">
+      We're excited to celebrate with you! Please RSVP below so we know your intentions.<br>
+      (More information will follow closer to the date.)
+    </div>
 
-<form id="rsvp-form">
-  <input name="name" placeholder="Name" required /><br>
-  <input name="email" type="email" placeholder="Email" required /><br>
+    <div class="divider">⋯ RSVP ⋯</div>
+    <h2>Let us know if you can join!</h2>
 
-  <select name="attending" required>
-    <option value="">Attending?</option>
-    <option value="Yes">Yes</option>
-    <option value="No">No</option>
-  </select><br>
+    <form id="rsvp-form">
+      <input name="name" placeholder="Your Name" required />
+      <input name="email" type="email" placeholder="Email Address" required />
+      <select name="attending" required>
+        <option value="">Will you attend?</option>
+        <option value="Yes">Yes, can't wait!</option>
+        <option value="No">Sorry, can't attend</option>
+      </select>
+      <input name="inviteCode" placeholder="Invite Code" required />
+      <button type="submit">Send RSVP</button>
+    </form>
 
-  <input name="inviteCode" placeholder="Invite Code" required /><br>
+    <div id="message" class="message-status"></div>
 
-  <button type="submit">Submit</button>
-</form>
+    <footer>
+      &copy; 2026 Jennifer & Philip – Birtsmorton Court
+    </footer>
+  </div>
 
-<div id="message" class="message"></div>
-
-<script>
-const FORM = document.getElementById("rsvp-form");
-const MESSAGE = document.getElementById("message");
-
-FORM.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  MESSAGE.textContent = "Submitting...";
-  MESSAGE.className = "message";
-
-  const data = {
-    name: FORM.name.value,
-    email: FORM.email.value,
-    attending: FORM.attending.value,
-    inviteCode: FORM.inviteCode.value
-  };
-
-  try {
-    const res = await fetch(
-      "https://script.google.com/macros/s/AKfycbwnmG9PAEOUj_TR4rlSJ_jAC-M9WsoPJHC8tO7WK4ZUgOm_ReH9ojI5mXKcUQYwqSrVRQ/exec", {
-        method: "POST",
-        body: new URLSearchParams({
-        inviteCode: FORM.inviteCode.value,
-        name: FORM.name.value,
-        email: FORM.email.value,
-        attending: FORM.attending.value
-        })
-      });
-
-    const result = await res.json();
-
-    if (!result.success) {
-      MESSAGE.textContent = result.message;
-      MESSAGE.classList.add("error");
-      return;
-    }
-
-    MESSAGE.textContent = "Thank you! Your RSVP has been recorded.";
-    MESSAGE.classList.add("success");
-    FORM.reset();
-
-  } catch (err) {
-    MESSAGE.textContent = "Network error. Please try again.";
-    MESSAGE.classList.add("error");
+  <script>
+  // Countdown to wedding day
+  const countdown = document.getElementById("countdown");
+  const weddingDate = new Date(2026, 9, 17); // JS months are 0-based: 9 = October
+  function updateCountdown() {
+    const today = new Date();
+    const diff = weddingDate - today;
+    if(diff <= 0) { countdown.textContent = "It's our big day!"; return; }
+    const days = Math.floor(diff / (1000*60*60*24));
+    countdown.textContent = "Only " + days + " day" + (days !== 1 ? "s" : "") + " to go!";
   }
-});
-</script>
+  updateCountdown();
+  setInterval(updateCountdown, 12*60*60*1000);
 
+  // RSVP JS
+  const FORM = document.getElementById("rsvp-form");
+  const MESSAGE = document.getElementById("message");
+
+  FORM.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    MESSAGE.textContent = "Submitting...";
+    MESSAGE.className = "message-status";
+    try {
+      const res = await fetch(
+        "https://script.google.com/macros/s/AKfycbwnmG9PAEOUj_TR4rlSJ_jAC-M9WsoPJHC8tO7WK4ZUgOm_ReH9ojI5mXKcUQYwqSrVRQ/exec",
+        {
+          method: "POST",
+          body: new URLSearchParams({
+            inviteCode: FORM.inviteCode.value,
+            name: FORM.name.value,
+            email: FORM.email.value,
+            attending: FORM.attending.value
+          })
+        }
+      );
+      const result = await res.json();
+      if (!result.success) {
+        MESSAGE.textContent = result.message;
+        MESSAGE.classList.add("error");
+        return;
+      }
+      MESSAGE.textContent = "Thank you! Your RSVP has been recorded.";
+      MESSAGE.classList.add("success");
+      FORM.reset();
+    } catch (err) {
+      MESSAGE.textContent = "Network error. Please try again.";
+      MESSAGE.classList.add("error");
+    }
+  });
+  </script>
 </body>
 </html>
