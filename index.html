@@ -4,227 +4,32 @@
   <meta charset="UTF-8" />
   <title>Save The Date – Jenny & Philip</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #FFFAF6;
-      font-family: "Segoe UI", Arial, sans-serif;
-      color: #3b2f2f;
-    }
-    .container {
-      width: 95vw;
-      max-width: 700px;
-      margin: 38px auto;
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 2px 16px rgba(120,65,20,0.07), 0 1.5px 5px rgba(180,110,60,0.03);
-      padding: 32px 22px 28px 22px;
-      border: 1.5px solid #F6D1AB;
-    }
-    .names {
-      text-align: center;
-      font-weight: 600;
-      font-size: 1.7em;
-      letter-spacing: 0.5px;
-      margin-bottom: 5px;
-      color: #B75D21;
-      font-family: 'Segoe UI', 'Arial', sans-serif;
-    }
-    .details {
-      text-align: center;
-      margin-bottom: 1.0em;
-      font-size: 1.13em;
-      background: #FFF3E2;
-      color: #855534;
-      border-radius: 7px;
-      padding: 10px 0 12px 0;
-    }
-    .details strong { color: #8B4A12; }
-    .countdown {
-      font-weight: 600;
-      color: #943F13;
-      text-align: center;
-      margin: 10px 0 20px 0;
-      font-size: 1.08em;
-      letter-spacing: 0.2px;
-    }
-    .message {
-      margin-bottom: 1.4em;
-      background: #FFE7CC;
-      padding: 12px 15px;
-      border-radius: 7px;
-      color: #A46A19;
-      text-align: center;
-      font-size: 1em;
-      font-family: inherit;
-    }
-    .divider {
-      color: #DC8D39;
-      font-size: 1.6em;
-      font-weight: bold;
-      text-align: center;
-      margin: 20px 0 10px 0;
-      letter-spacing: 3px;
-      line-height: 1;
-      user-select: none;
-    }
-    h2 {
-      color: #AF620D;
-      margin: 0.5em 0 0.23em 0;
-      font-size: 1.09em;
-      text-align: center;
-      font-weight: 500;
-    }
-    form {
-      margin-top: 14px;
-      text-align: center;
-    }
-    input, select, button {
-      width: 95%;
-      max-width: 350px;
-      box-sizing: border-box;
-      margin: 0.60em 0 1em 0;
-      padding: 10px;
-      font-size: 1em;
-      border: 1.5px solid #F6D1AB;
-      border-radius: 5px;
-      outline: none;
-      background: #FFFCF7;
-      color: #422002;
-      font-family: inherit;
-      transition: border-color .13s;
-    }
-    input:focus, select:focus {
-      border: 1.5px solid #DC8D39;
-    }
-    button {
-      background: #B75D21;
-      color: #fff;
-      border: none;
-      font-size: 1.07em;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-top: 8px;
-      font-weight: 600;
-      box-shadow: 0 2.5px 9px rgba(183,93,33,0.12);
-      transition: background 0.15s;
-    }
-    button:hover {
-      background: #943F13;
-    }
-    .message-status.error { color: #C0392B; }
-    .message-status.success { color: #248a3d; }
-    .venue-link {
-      color: #B75D21;
-      text-decoration: underline;
-      font-weight: 600;
-    }
-    footer {
-      margin-top: 25px;
-      font-size: 0.95em;
-      color: #B75D21;
-      text-align: center;
-      opacity: 0.7;
-    }
-    @media (max-width: 520px) {
-      .container { max-width: 97vw; padding: 10px 2vw 18px 2vw; }
-      .divider { font-size: 1.29em; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="venue.html">Venue</a>
+    <a href="faqs.html">FAQs</a>
+    <a href="savethedate.html">Save the Date</a>
+  </nav>
   <div class="container">
+    <img src="your-photo.jpg" alt="Jenny & Philip" class="hero-photo" />
     <div class="names">
       Jenny Smallwood <span style="color:#B75D21">♥</span> Philip Aldhous
     </div>
     <div class="details">
-      <strong>Wedding Date:</strong> 17<sup>th</sup> October 2026<br>
+      <strong>Date:</strong> 17<sup>th</sup> October 2026<br>
       <strong>Venue:</strong>
-      <a class="venue-link" href="https://birtsmortoncourt.com/" target="_blank">
-        Birtsmorton Court, Malvern
-      </a>
+      <a class="venue-link" href="https://birtsmortoncourt.com/" target="_blank">Birtsmorton Court, Malvern</a>
     </div>
-    <div class="countdown" id="countdown"></div>
-
     <div class="message">
-      We'd be delighted if you could join us to celebrate our wedding in beautiful autumn.<br>
-      Please save the date and RSVP below. <em>More details closer to the day.</em>
+      We’d be delighted if you could join us in beautiful autumn for our wedding. Explore the pages for schedule, venue info, FAQs, and RSVP!
     </div>
-
-    <div class="divider">RSVP</div>
-    <h2>Will you be able to attend?</h2>
-
-    <form id="rsvp-form">
-      <input name="name" placeholder="Your Name" required autofocus />
-      <input name="email" type="email" placeholder="Email Address" required />
-      <select name="attending" required>
-        <option value="">Will you attend?</option>
-        <option value="Yes">Yes, looking forward to it!</option>
-        <option value="No">Sorry, can't attend</option>
-      </select>
-      <input name="inviteCode" placeholder="Invite Code" required />
-      <button type="submit">Send RSVP</button>
-    </form>
-
-    <div id="message" class="message-status"></div>
-
-    <footer>
-      &copy; 2026 Jenny &amp; Philip – Birtsmorton Court
-    </footer>
   </div>
-  <script>
-  // Countdown to wedding day
-  const countdown = document.getElementById("countdown");
-  const weddingDate = new Date(2026, 9, 17); // Months: 0=Jan ... 9=Oct
-  function updateCountdown() {
-    const today = new Date();
-    const diff = weddingDate - today;
-    if (diff <= 0) {
-      countdown.textContent = "It's our wedding day!";
-      return;
-    }
-    const days = Math.floor(diff / (1000*60*60*24));
-    countdown.textContent = "Only " + days + " day" + (days !== 1 ? "s" : "") + " to go!";
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 12*60*60*1000);
-
-  // RSVP JS
-  const FORM = document.getElementById("rsvp-form");
-  const MESSAGE = document.getElementById("message");
-
-  FORM.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    MESSAGE.textContent = "Submitting...";
-    MESSAGE.className = "message-status";
-    try {
-      const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbwnmG9PAEOUj_TR4rlSJ_jAC-M9WsoPJHC8tO7WK4ZUgOm_ReH9ojI5mXKcUQYwqSrVRQ/exec",
-        {
-          method: "POST",
-          body: new URLSearchParams({
-            inviteCode: FORM.inviteCode.value,
-            name: FORM.name.value,
-            email: FORM.email.value,
-            attending: FORM.attending.value
-          })
-        }
-      );
-      const result = await res.json();
-      if (!result.success) {
-        MESSAGE.textContent = result.message;
-        MESSAGE.classList.add("error");
-        return;
-      }
-      MESSAGE.textContent = "Thank you! Your RSVP has been recorded.";
-      MESSAGE.classList.add("success");
-      FORM.reset();
-    } catch (err) {
-      MESSAGE.textContent = "Network error. Please try again.";
-      MESSAGE.classList.add("error");
-    }
-  });
-  </script>
+  <footer>
+    &copy; 2026 Jenny &amp; Philip – Birtsmorton Court
+  </footer>
 </body>
 </html>
