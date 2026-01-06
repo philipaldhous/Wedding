@@ -75,6 +75,17 @@ img {
   box-shadow: 0 2px 18px rgba(226,93,36,0.14);
 }
 
+.map-embed {
+  width: 100%;
+  max-width: 100%;
+  height: 340px;
+  border: 0;
+  border-radius: 14px;
+  box-shadow: 0 2px 18px rgba(226,93,36,0.14);
+  margin: 20px 0;
+  display: block;
+}
+
 .names {
   text-align: center;
   font-weight: 700;
@@ -252,6 +263,7 @@ footer {
   .navbar { font-size: 0.88em; gap: 5px; }
   .navbar a { padding: 6px 10px; }
   .hero-photo { max-width: 100%; border-radius: 7px; height: auto; }
+  .map-embed { height: 220px; border-radius: 7px; }
   .photo-gallery { flex-direction: column; gap: 15px; align-items: center; width: 100%; }
   .gallery-photo { width: 65vw; max-width: 100% }
 }
