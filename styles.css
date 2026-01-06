@@ -200,6 +200,11 @@ input:focus, select:focus, textarea:focus {
   border: 1.7px solid #E25D24;
 }
 
+textarea {
+  text-align: center;
+  resize: vertical;
+}
+
 button {
   background: linear-gradient(90deg, #E25D24 72%, #E8B04E 100%);
   color: #fff;
