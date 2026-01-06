@@ -43,6 +43,19 @@ body {
   padding: 45px 35px 32px 35px;
   border: none;
 }
+.photo-gallery {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.gallery-photo {
+  flex: 1;
+  max-width: 94%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 2px 18px rgba(226,93,36,0.14);
 
 .hero-photo {
   display: block;
@@ -222,5 +235,6 @@ footer {
   .container { max-width: 99vw; padding: 9px 0vw 12px 0vw; }
   .divider, h1 { font-size: 1.14em; }
   .navbar { font-size: 0.97em; gap: 7px; }
-  .hero-photo { max-width: 100%; border-radius: 7px; }
+  .hero-photo { max-width: 100%; border-radius: 7px; height: 200px;}
+  .photo-gallery { flex-direction: column; gap: 15px; }
 }
