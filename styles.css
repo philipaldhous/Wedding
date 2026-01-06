@@ -51,7 +51,6 @@ body {
 
 .gallery-photo {
   flex: 1;
-  max-width: 94%;
   height: 300px;
   object-fit: cover;
   border-radius: 16px;
