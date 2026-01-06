@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>RSVP – Jenny & Philip</title>
+  <title>Save the Date – Jenny & Philip</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -15,23 +15,18 @@
     <a href="savethedate.html">Save the Date</a>
   </nav>
   <div class="container">
-    <h1>Save the Date & RSVP</h1>
-    <div class="countdown" id="countdown"></div>
+    <h1>Save the Date</h1>
     <div class="message">
-      Please RSVP to let us know if you’ll be able to join us!<br>
-      <em>Please use your personal Invite Code (from your invitation).</em>
+      Please enter your details below to receive your invitation!<br>
+      <em>Please use your personal Invite Code (from your save the date).</em>
     </div>
     <form id="rsvp-form">
-      <input name="fullName" type="text" placeholder="Full Name(s)" required autofocus />
+      <input name="firstGuestName" type="text" placeholder="Full name of first guest" required autofocus />
+      <textarea name="additionalGuests" placeholder="Full names of additional guests, as per your save the date" rows="3"></textarea>
       <input name="email" type="email" placeholder="Email Address" required />
       <input name="address" type="text" placeholder="Postal Address" required />
-      <select name="attending" required>
-        <option value="">Will you attend?</option>
-        <option value="Yes">Yes, looking forward to it!</option>
-        <option value="No">Sorry, can't attend</option>
-      </select>
       <input name="inviteCode" placeholder="Invite Code" required />
-      <button type="submit">Send RSVP</button>
+      <button type="submit">Submit Details</button>
     </form>
     <div id="message" class="message-status"></div>
   </div>
@@ -39,23 +34,7 @@
     &copy; 2026 Jenny &amp; Philip – Birtsmorton Court
   </footer>
   <script>
-  // Countdown to wedding day
-  const countdown = document.getElementById("countdown");
-  const weddingDate = new Date(2026, 9, 17); // Note: months are 0-based
-  function updateCountdown() {
-    const today = new Date();
-    const diff = weddingDate - today;
-    if (diff <= 0) {
-      countdown.textContent = "It's our wedding day!";
-      return;
-    }
-    const days = Math.floor(diff / (1000*60*60*24));
-    countdown.textContent = "Only " + days + " day" + (days !== 1 ? "s" : "") + " to go!";
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 12*60*60*1000);
-
-  // RSVP JS
+  // Guest details submission form
   const FORM = document.getElementById("rsvp-form");
   const MESSAGE = document.getElementById("message");
 
@@ -70,10 +49,10 @@
           method: "POST",
           body: new URLSearchParams({
             inviteCode: FORM.inviteCode.value,
-            fullName: FORM.fullName.value,
+            firstGuestName: FORM.firstGuestName.value,
+            additionalGuests: FORM.additionalGuests.value,
             email: FORM.email.value,
-            address: FORM.address.value,
-            attending: FORM.attending.value
+            address: FORM.address.value
           })
         }
       );
@@ -83,7 +62,7 @@
         MESSAGE.classList.add("error");
         return;
       }
-      MESSAGE.textContent = "Thank you! Your RSVP has been recorded.";
+      MESSAGE.textContent = "Thank you! Your details have been recorded and your invitation will be sent soon.";
       MESSAGE.classList.add("success");
       FORM.reset();
     } catch (err) {
