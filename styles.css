@@ -61,7 +61,7 @@ img {
 .gallery-photo {
   flex: 1;
   min-width: 0;
-  height: 300px;
+  aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 2px 18px rgba(226,93,36,0.14);
@@ -253,5 +253,5 @@ footer {
   .navbar a { padding: 6px 10px; }
   .hero-photo { max-width: 100%; border-radius: 7px; height: auto; }
   .photo-gallery { flex-direction: column; gap: 15px; align-items: center; width: 100%; }
-  .gallery-photo { height: auto; width: 100%; max-width: 100%; }
+  .gallery-photo { max-height: 65vw; width: 100% }
 }
