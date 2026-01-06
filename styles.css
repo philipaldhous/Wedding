@@ -239,5 +239,5 @@ footer {
   .navbar a { padding: 6px 10px; }
   .hero-photo { max-width: 100%; border-radius: 7px; height: 200px;}
   .photo-gallery { flex-direction: column; gap: 15px; align-items: center; }
-  .gallery-photo { height: 200px; width: 100%; max-width: 100%; }
+  .gallery-photo { height: 200px; max-width: 100%; }
 }
