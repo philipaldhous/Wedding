@@ -51,11 +51,11 @@ body {
 
 .gallery-photo {
   flex: 1;
+  min-width: 0;
   height: 300px;
   object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 2px 18px rgba(226,93,36,0.14);
-  max-width: 100%;
 }
 
 .hero-photo {
