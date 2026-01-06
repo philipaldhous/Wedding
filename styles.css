@@ -244,8 +244,17 @@ button:hover {
   transition: color 0.14s;
 }
 
+.venue-link a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 .venue-link:hover {
   color: #B23326;
+}
+
+.venue-link a:hover {
+  color: #B23326; 
 }
 
 footer {
