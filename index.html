@@ -28,6 +28,7 @@
       <strong>Venue:</strong>
       <a class="venue-link" href="https://birtsmortoncourt.com/" target="_blank">Birtsmorton Court, Malvern</a>
     </div>
+    <div class="countdown" id="countdown"></div>
     <div class="message">
       We’d be delighted if you would join us for our wedding celebrations. <br>
       Explore the pages for schedule, venue info, FAQs. <br>
@@ -37,5 +38,22 @@
   <footer>
     &copy; 2026 Jenny &amp; Philip – Birtsmorton Court
   </footer>
+  <script>
+  // Countdown to wedding day
+  const countdown = document.getElementById("countdown");
+  const weddingDate = new Date(2026, 9, 17); // Note: months are 0-based
+  function updateCountdown() {
+    const today = new Date();
+    const diff = weddingDate - today;
+    if (diff <= 0) {
+      countdown.textContent = "It's our wedding day!";
+      return;
+    }
+    const days = Math.floor(diff / (1000*60*60*24));
+    countdown.textContent = "Only " + days + " day" + (days !== 1 ? "s" : "") + " to go!";
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 12*60*60*1000);
+  </script>
 </body>
 </html>

@@ -170,7 +170,7 @@ form {
   text-align: center;
 }
 
-input, select, button {
+input, select, textarea, button {
   width: 96%;
   max-width: 370px;
   box-sizing: border-box;
@@ -187,7 +187,7 @@ input, select, button {
   font-weight: 500;
 }
 
-input:focus, select:focus {
+input:focus, select:focus, textarea:focus {
   border: 1.7px solid #E25D24;
 }
 
