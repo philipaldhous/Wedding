@@ -56,6 +56,7 @@ body {
   object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 2px 18px rgba(226,93,36,0.14);
+}
 
 .hero-photo {
   display: block;
@@ -237,4 +238,5 @@ footer {
   .navbar { font-size: 0.97em; gap: 7px; }
   .hero-photo { max-width: 100%; border-radius: 7px; height: 200px;}
   .photo-gallery { flex-direction: column; gap: 15px; }
+  .gallery-photo { height: 200px; }
 }
