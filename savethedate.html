@@ -12,65 +12,215 @@
     <a href="schedule.html">Schedule</a>
     <a href="venue.html">Venue</a>
     <a href="accommodation.html">Accommodation</a>
+    <a href="transport.html">Transport &amp; Taxis</a>
     <a href="faqs.html">FAQs</a>
-    <a href="savethedate.html" class="active">Save the Date</a>
+    <a href="savethedate.html" class="active">RSVP</a>
   </nav>
   <div class="container">
-    <h1>Save the Date</h1>
-    <div class="message">
-      Please enter your details below to receive your invitation!<br>
-      <em>Please use your personal Invite Code (from your save the date).</em>
-    </div>
-    <form id="rsvp-form">
-      <input name="firstGuestName" type="text" placeholder="Full name of first guest" required autofocus />
-      <textarea name="additionalGuests" placeholder="Full names of additional guests, as per your save the date" rows="3"></textarea>
-      <input name="email" type="email" placeholder="Email Address" required />
-      <input name="address" type="text" placeholder="Postal Address" required />
-      <input name="inviteCode" placeholder="Invite Code" required />
-      <button type="submit">Submit Details</button>
-    </form>
-    <div id="message" class="message-status"></div>
+  <h1>RSVP</h1>
+  
+  <div class="message">
+    Please let us know if you’ll be joining us, and share your menu choices.<br>
+    <em>Please use your Invite Code.</em>
   </div>
+
+  <div class="menu-card">
+    <h2>Wedding Menu</h2>
+  
+    <div class="menu-section">
+      <h3>Starters</h3>
+      <ul>
+        <li>Curried parsnip soup, coriander oil and onion bhaji</li>
+        <li>Winter bubble and squeak cake, roasted squash, pancetta and a soft poached egg</li>
+        <li>Smoked mackerel fillet, celeriac remoulade and toasted sourdough croutes</li>
+      </ul>
+    </div>
+  
+    <div class="menu-section">
+      <h3>Mains</h3>
+      <ul>
+        <li>Roasted rump of lamb, celeriac purée, rosemary fondant potato, winter greens & red wine jus</li>
+        <li>Pan fried seabream, warm herb dressed new potatoes, caponata, capers & fresh basil</li>
+        <li>Mediterranean vegetable filled puff pastry wellington, rosemary roasted new potatoes, seasonal greens and
+          tomato ragu</li>
+      </ul>
+    </div>
+  
+    <div class="menu-section">
+      <h3>Desserts</h3>
+      <ul>
+        <li>Warm chocolate brownie, golden syrup marshmallow, salted caramel sauce and orange salad</li>
+        <li>Homegrown plum Bakewell tart, plum coulis, clotted cream and praline crumb</li>
+      </ul>
+    </div>
+  </div>
+
+  <p style="text-align:center; font-style: italic; margin-bottom: 30px;">
+    Please select one option from each course for each guest when completing your RSVP.<br>
+    Any dish can be adapted to cater for dietary requirements or allergies.
+    Please make this clear in the section provided alongside your choices
+  </p>
+  
+  <form id="rsvp-form">
+  
+    <!-- Invite Code -->
+    <input name="inviteCode" placeholder="Invite Code" required />
+  
+    <!-- Lead guest name (ALWAYS required) -->
+    <input name="primaryGuestName" type="text" placeholder="Your full name" required />
+
+    <!-- Attendance -->
+    <select name="attending" id="attending" required>
+      <option value="">Will you be attending?</option>
+      <option value="yes">Accept with pleasure</option>
+      <option value="no">Decline with regret</option>
+    </select>
+  
+    <!-- RSVP details (hidden if not attending) -->
+    <div id="rsvp-details" style="display:none;">
+  
+      <!-- Party size -->
+      <input name="partySize" id="partySize" type="number" min="1" max="6" placeholder="Total number of attending in your party" />
+  
+      <!-- Dynamic guests -->
+      <div id="guests"></div>
+  
+      <!-- Optional extras -->
+      <input name="phone" type="tel" placeholder="Phone number (for the day, optional)" />
+      <input name="songRequest" type="text" placeholder="Song request (optional)" />
+      <textarea name="messageToCouple" placeholder="Message for us (optional)" rows="3"></textarea>
+  
+    </div>
+  
+    <button type="submit">Submit RSVP</button>
+  </form>
+  
+  <div id="message" class="message-status"></div>
+  </div>
+  
   <footer>
     &copy; 2026 Jenny &amp; Philip – Birtsmorton Court
   </footer>
+  
   <script>
-  // Guest details submission form
-  const FORM = document.getElementById("rsvp-form");
-  const MESSAGE = document.getElementById("message");
+    const FORM = document.getElementById("rsvp-form");
+    const MESSAGE = document.getElementById("message");
 
-  FORM.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    MESSAGE.textContent = "Submitting...";
-    MESSAGE.className = "message-status";
-    try {
-      const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbwnmG9PAEOUj_TR4rlSJ_jAC-M9WsoPJHC8tO7WK4ZUgOm_ReH9ojI5mXKcUQYwqSrVRQ/exec",
-        {
-          method: "POST",
-          body: new URLSearchParams({
-            inviteCode: FORM.inviteCode.value,
-            firstGuestName: FORM.firstGuestName.value,
-            additionalGuests: FORM.additionalGuests.value,
-            email: FORM.email.value,
-            address: FORM.address.value
-          })
-        }
-      );
-      const result = await res.json();
-      if (!result.success) {
-        MESSAGE.textContent = result.message;
-        MESSAGE.classList.add("error");
-        return;
+    const attendingSelect = document.getElementById("attending");
+    const detailsSection = document.getElementById("rsvp-details");
+    const partySizeInput = document.getElementById("partySize");
+    const guestsDiv = document.getElementById("guests");
+
+    // Show/hide RSVP details
+    attendingSelect.addEventListener("change", () => {
+      if (attendingSelect.value === "yes") {
+        detailsSection.style.display = "block";
+        partySizeInput.required = true;
+      } else {
+        detailsSection.style.display = "none";
+        partySizeInput.required = false;
+        guestsDiv.innerHTML = "";
       }
-      MESSAGE.textContent = "Thank you! Your details have been recorded and your invitation will be sent soon.";
-      MESSAGE.classList.add("success");
-      FORM.reset();
-    } catch (err) {
-      MESSAGE.textContent = "Network error. Please try again.";
-      MESSAGE.classList.add("error");
-    }
-  });
+    });
+
+    // Generate guest fields
+    partySizeInput.addEventListener("change", () => {
+      guestsDiv.innerHTML = "";
+      const count = parseInt(partySizeInput.value);
+      const primaryName = FORM.primaryGuestName.value
+
+      if (!count || count < 1) return;
+
+      for (let i = 1; i <= count; i++) {
+        const guest = document.createElement("div");
+        guest.classList.add("guest-block");
+
+        guest.innerHTML = `
+        <h3>Guest ${i}</h3>
+  
+        <input 
+          name="guestName_${i}" 
+          placeholder="Full name"
+          value="${i === 1 ? primaryName : ""}"
+          required 
+        />
+  
+        <select name="starter_${i}" required>
+          <option value="">Select starter</option>
+          <option value="meat">Bubble and squeak cake</option>
+          <option value="fish">Mackerel fillet</option>
+          <option value="vegetarian">Curried parsnip soup</option>
+          <option value="no_starter">No starter</option>
+        </select>
+  
+        <select name="main_${i}" required>
+          <option value="">Select main</option>
+          <option value="meat">Lamb rump</option>
+          <option value="fish">Seabream with caponata</option>
+          <option value="vegetarian">Mediterranean wellington</option>
+          <option value="no_main">No main</option>
+        </select>
+  
+        <select name="dessert_${i}" required>
+          <option value="">Select dessert</option>
+          <option value="chocolate">Chocolate brownie</option>
+          <option value="fruit">Plum bakewell tart </option>
+          <option value="no_dessert">No dessert</option>
+        </select>
+  
+        <input 
+          name="diet_${i}" 
+          placeholder="Dietary requirements/allergies (optional)" 
+        />
+      `;
+
+        guestsDiv.appendChild(guest);
+      }
+    });
+
+    // Submit form
+    FORM.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      MESSAGE.textContent = "Submitting...";
+      MESSAGE.className = "message-status";
+
+      try {
+        const formData = new FormData(FORM);
+        const data = {};
+
+        formData.forEach((value, key) => {
+          data[key] = value;
+        });
+
+        const res = await fetch(
+          "https://script.google.com/macros/s/AKfycbzKiY94PT7-NycqumqrbZahmNKGWiWCkmpI61QP1yVutFxDzilsIKAqb6KLx7eFY4M5RA/exec",
+          {
+            method: "POST",
+            body: JSON.stringify(data)
+          }
+        );
+
+        const result = await res.json();
+
+        if (!result.success) {
+          MESSAGE.textContent = result.message || "Submission failed.";
+          MESSAGE.classList.add("error");
+          return;
+        }
+
+        MESSAGE.textContent = "Thank you! Your RSVP has been received.";
+        MESSAGE.classList.add("success");
+        FORM.reset();
+        detailsSection.style.display = "none";
+        guestsDiv.innerHTML = "";
+
+      } catch (err) {
+        MESSAGE.textContent = "Network error. Please try again.";
+        MESSAGE.classList.add("error");
+      }
+    });
   </script>
-</body>
-</html>
+  </body>
+  
+  </html>
