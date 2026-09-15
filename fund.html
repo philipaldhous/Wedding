@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Gift Fund – Jenny &amp; Philip</title>
+  <title>Wedding Gifts – Jenny &amp; Philip</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -17,12 +17,58 @@
     <a href="fund.html" class="active">Fund</a>
   </nav>
 
-  <main style="max-width:1100px;margin:24px auto;padding:0 16px;">
-    <h1 style="font-family: 'Merriweather', serif; color:#B23326; text-align:center;">Gift Fund</h1>
+  <main class="container">
+    <h1>Wedding Gifts</h1>
+
+    <div class="message">
+      <p>
+        The greatest gift we could receive is having you share our special day
+        with us. Your presence really is more than enough.
+      </p>
+      <p>
+        If you would still like to give us something, we have put together an
+        <a
+          class="venue-link"
+          href="https://www.amazon.co.uk/wedding/share/js_ps_1710"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Amazon gift list</a>.
+      </p>
+      <p>
+        If nothing there takes your fancy, you are very welcome to contribute
+        towards one of our three funds below.
+      </p>
+    </div>
+
+    <h2>Our Gift Funds</h2>
+    <p class="fund-intro">
+      The dashboard below shows the total contributed to each of our three
+      funds: our Honeymoon Fund, a new mainsail for Firefly, and a Coffee Machine
+      Fund.
+    </p>
+
+    <div class="fund-dashboard">
+      <iframe
+        class="fund-frame fund-totals"
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDX-dLSnrIh5oFlx8-w-ujmBJv30meGZWOpeA73LAcyC0_PyuCZfntesY8k5ujdgRv7sShFrsU9F3G/pubhtml?gid=1372947367&amp;single=true&amp;widget=true&amp;headers=false"
+        title="Current totals for our honeymoon, Firefly mainsail, and coffee machine funds"
+        loading="lazy"
+        scrolling="no">
+      </iframe>
+    </div>
+
+    <h2>Make a Contribution</h2>
+    <p class="fund-intro">
+      Choose one of the three funds and enter the amount you would like to
+      contribute. Your contribution will then be added to the totals above.
+    </p>
+
     <iframe
-      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDX-dLSnrIh5oFlx8-w-ujmBJv30meGZWOpeA73LAcyC0_PyuCZfntesY8k5ujdgRv7sShFrsU9F3G/pubhtml?gid=1372947367&single=true&widget=true&headers=false"
-      style="width:100%;min-height:80vh;border:0;border-radius:12px;background:#fff;box-shadow:0 8px 30px rgba(0,0,0,.08);"
-      loading="lazy">
+      class="fund-frame fund-form"
+      src="https://docs.google.com/forms/d/e/1FAIpQLSfaEnPe97zwkYqXHH9AscPY-h56lim_iUZvySqbgnkKTDkTsw/viewform?embedded=true"
+      title="Gift fund contribution form"
+      scrolling="no">
+      Loading…
     </iframe>
   </main>
 
