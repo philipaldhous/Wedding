@@ -449,3 +449,73 @@ footer {
   .gallery-photo { width: 65vw; max-width: 100% }
   .taxi-grid { grid-template-columns: 1fr; }
 }
+
+.fund-intro {
+  max-width: 620px;
+  margin: 0 auto 18px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.message p {
+  margin: 0 0 1em;
+  line-height: 1.6;
+}
+
+.message p:last-child {
+  margin-bottom: 0;
+}
+
+.fund-frame {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  background: #fff;
+  margin: 18px 0 32px;
+}
+
+.fund-totals {
+  min-height: 520px;
+  box-shadow: 0 4px 20px rgba(226, 93, 36, 0.1);
+}
+
+.fund-form {
+  height: 1250px;
+}
+
+.fund-dashboard {
+  --dashboard-scale: 0.72;
+  height: 560px;
+  margin: 18px 0 32px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(226, 93, 36, 0.1);
+}
+
+.fund-dashboard .fund-totals {
+  width: calc(100% / var(--dashboard-scale));
+  height: calc(560px / var(--dashboard-scale));
+  min-height: 0;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transform: scale(var(--dashboard-scale));
+  transform-origin: top left;
+}
+
+@media (max-width: 520px) {
+  .fund-form {
+    height: 1450px;
+  }
+
+  .fund-dashboard {
+    --dashboard-scale: 0.62;
+    height: 500px;
+  }
+
+  .fund-dashboard .fund-totals {
+    height: calc(500px / var(--dashboard-scale));
+  }
+}
