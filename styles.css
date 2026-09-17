@@ -486,7 +486,7 @@ footer {
 
 .fund-dashboard {
   --dashboard-scale: 0.72;
-  height: 560px;
+  height: 600px;
   margin: 18px 0 32px;
   overflow: hidden;
   border-radius: 10px;
@@ -496,7 +496,7 @@ footer {
 
 .fund-dashboard .fund-totals {
   width: calc(100% / var(--dashboard-scale));
-  height: calc(560px / var(--dashboard-scale));
+  height: calc(100% / var(--dashboard-scale));
   min-height: 0;
   margin: 0;
   border-radius: 0;
