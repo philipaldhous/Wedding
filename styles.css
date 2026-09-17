@@ -481,12 +481,12 @@ footer {
 }
 
 .fund-form {
-  height: 1850px;
+  height: 1450px;
 }
 
 .fund-dashboard {
   --dashboard-scale: 0.72;
-  height: 1600px;
+  height: 600px;
   margin: 18px 0 32px;
   overflow: hidden;
   border-radius: 10px;
